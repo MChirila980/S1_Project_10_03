@@ -20,13 +20,111 @@
 
 
 /* Transition Effects */
+nav#gameLinks a {
 
+    position: relative;
+    color: white;
+    transition: color .5s;
 
+}
 
+nav#gameLinks a:hover {
 
+    color: rgb(255, 194, 99);
+
+}
+
+/*  transition effect applied to the links in the gameLinks list in 
+which a gradient-colored bar gradually expands under each link during
+ the hover event. */
+nav#gameLinks a::after {
+
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    width: 0%;
+    height: 8px;
+    background: linear-gradient(to right rgb(237, 243,71), rgb(188, 74, 0));
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity .5s, width .5s;
+}
+
+/* this is changing the appearance of the bar. */
+nav#gameLinks a:hover:after {
+
+    opacity: 1;
+    width: 100%;
+
+}
 /* Sprite Styles */
+div.sprite {
+    position: absolute;
+}
 
+/* this style is for the bat. */
+div#bat {
+    width: 40px;
+    height: 50px;
+    top: 100px;
+    left: -50px;
+    background: url("paa_bat.png") left center/cover no-repeat;
+    animation: playSprite 1s 3s steps(39) infinite, flyright 8s linear infinite;
 
+}
+/* this style is for the butterfly /gonna fly right for 6 seconds.*/
+div#butterfly {
+    width: 35px;
+    height: 35px;
+    left: -50px;
+    top: 60px;
+    background: url("paa_bfly.png") left center/cover no-repeat;
+    animation: playSprite 1s 3s steps(33) infinite, flyright 6s cubic-bezier(0,1,0.73,0) infinite;
 
+}
 
+/* this style is for the fox */
+
+div#fox{
+
+    width: 280px;
+    height: 260px;
+    bottom: 10px;
+    right: 10px;
+    background: url("paa_fox.png") left center/cover no-repeat;
+    animation: playSprite 3.5s 4s steps(27) infinite;
+}
 /* Animation Styles */
+/* the keyframes for the play sprite */
+@keyframes playSprite {
+
+    100% {
+        background-position: right center;
+    }
+}
+
+/* the keyframes for flying right */
+@keyframes flyRight {
+
+    25% {
+        top: 150px;
+    }
+
+    50% {
+        top: 55px;
+    }
+
+    65% {
+        top:120px;
+    }
+
+    90% {
+        top: 50px;
+    }
+
+    100% {
+        top: 80px;
+        left: 100%;
+    }
+}
